@@ -3,63 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <title>Angular: ALL METHODS</title>
-  
-  
+
+
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
 
-      <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
-  
+
 </head>
 
 <body>
   <div ng-app="createApp" ng-controller="ctrlr" class="container-fluid">
-     <h1>Update Artists Tester</h1>
-     
-     <!-- Update Form -->
-     <form class="container" id="form">
-          <label>Photo:</label> 
-          <input type="file" id="image" />
-          <br>
-          
-          <label>Name:</label>
-          <input type="text" class="form-control" ng-model="currentArtist.name" />
-          <br>
+    <h1>Update Artists Tester</h1>
 
-          <label>Bio:</label>
-          <textarea class="form-control" ng-model="currentArtist.bio"></textarea>
-          <br>
+    <!-- Update Form -->
+    <form class="container" id="form">
+      <label>Photo:</label>
+      <input type="file" id="image" />
+      <br>
 
-          <label>Date of Birth:</label>
-          <input type="date" class="form-control" ng-model="currentArtist.dob" />
-          <br>
-          <label></label>
-          <button class="btn btn-primary" ng-click="save();">Save</button>
-          <button class="btn btn-default" ng-click="clear();">Clear</button>
-     </form>
-     
-     <!-- Display Data -->
-     <div class="container" ng-repeat="artist in artists">
-          <!-- The ng-show will only display an image if it is defined -->
-          <img ng-show="{{artist.image !== undefined}}" ng-src="{{ artist.image.items[3].file_path }}" />
+      <label>Name:</label>
+      <input type="text" class="form-control" ng-model="currentArtist.name" />
+      <br>
 
-          <strong>{{ artist.name }}</strong>
-          <a ng-click="edit(artist)"><i class="fa fa-edit"></i></a>
-          <a ng-click="delete(artist._id)"><i class="fa fa-trash"></i></a>
-          <br> Bio: {{ artist.bio }}
-          <br> DOB: {{ artist.dob }}
-     </div>
-     
-     <pre>
-{{ artists | json }}
-</pre>
+      <label>Bio:</label>
+      <textarea class="form-control" ng-model="currentArtist.bio"></textarea>
+      <br>
 
-</div>
+      <label>Date of Birth:</label>
+      <input type="date" class="form-control" ng-model="currentArtist.dob" />
+      <br>
+      <label></label>
+      <button class="btn btn-primary" ng-click="save();">Save</button>
+      <button class="btn btn-default" ng-click="clear();">Clear</button>
+    </form>
+
+    <!-- Display Data -->
+    <div class="container" ng-repeat="artist in artists">
+
+      <!-- The ng-show will only display an image if it is defined -->
+      <img ng-show="{{artist.image !== undefined}}" ng-src="{{ artist.image.items[3].file_path }}" />
+
+      <strong>{{ artist.name }}</strong>
+      <a ng-click="edit(artist)"><i class="fa fa-edit"></i></a>
+      <a ng-click="delete(artist._id)"><i class="fa fa-trash"></i></a>
+      <br> Bio: {{ artist.bio }}
+      <br> DOB: {{ artist.dob }}
+    </div>
+    <p> </p>
+    <h3>Image if defined will show below of https://mmart162-api.herokuapp.com/jcj52436999/artists/</h3>
+
+    <pre>
+      {{ artists | json }}
+    </pre>
+
+  </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.8/angular.min.js'></script>
 
-    <script src="js/index.js"></script>
+  <script src="js/index.js"></script>
 
 </body>
 </html>
