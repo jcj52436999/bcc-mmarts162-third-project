@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Angular: ALL METHODS</title>
+  <title>bcc-mmarts162-3d-project from Angular: ALL METHODS</title>
 
 
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
@@ -15,9 +15,12 @@
 
 <body>
   <div ng-app="createApp" ng-controller="ctrlr" class="container-fluid">
-    <h1>Update Artists Tester</h1>
+    <h1>Nutrition Tester Update Screen from Artists Tester</h1>
 
     <!-- Update Form -->
+    <br>
+    <h3>Entry form for Nutritional Data.</h3>
+
     <form class="container" id="form">
       <label>Photo:</label>
       <input type="file" id="image" />
@@ -40,6 +43,9 @@
     </form>
 
     <!-- Display Data -->
+    <br>
+    <h3>Display for Nutritional Data.</h3>
+
     <div class="container" ng-repeat="artist in artists">
 
       <!-- The ng-show will only display an image if it is defined -->
@@ -51,8 +57,8 @@
       <br> Bio: {{ artist.bio }}
       <br> DOB: {{ artist.dob }}
     </div>
-    <p> </p>
-    <h3>Image if defined will show below of https://mmart162-api.herokuapp.com/jcj52436999/artists/</h3>
+    <br> <br>
+    <h3>Nutrition Images if defined, or json if no images, will show below of https://mmart162-api.herokuapp.com/jcj52436999/artists/</h3>
 
     <pre>
       {{ artists | json }}
