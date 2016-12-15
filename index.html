@@ -15,37 +15,39 @@
 
 <body>
   <div ng-app="createApp" ng-controller="ctrlr" class="container-fluid">
-    <h1>Nutrition Tester Update Screen from Artists Tester</h1>
+    <h1>Nutrition Screens modified from Artists Tester</h1>
 
-    <!-- Update Form -->
+    <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+    <!-- Update Form - Entry form for Foods Data. -->
     <br>
-    <h3>Entry form for Nutritional Data.</h3>
-
+    <h3>Entry form for Foods Data.</h3>
     <form class="container" id="form">
       <label>Photo:</label>
       <input type="file" id="image" />
       <br>
 
-      <label>Name:</label>
+      <label>Name of Food:</label>
       <input type="text" class="form-control" ng-model="currentArtist.name" />
       <br>
 
-      <label>Bio:</label>
+      <label>Description of Food:</label>
       <textarea class="form-control" ng-model="currentArtist.bio"></textarea>
       <br>
 
-      <label>Date of Birth:</label>
+      <label>Sell By Date:</label>
       <input type="date" class="form-control" ng-model="currentArtist.dob" />
       <br>
       <label></label>
-      <button class="btn btn-primary" ng-click="save();">Save</button>
+      <button class="btn btn-primary" ng-click="saveFood();">Save</button>
       <button class="btn btn-default" ng-click="clear();">Clear</button>
     </form>
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-    <!-- Display Data -->
+
+    <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+    <!-- Display Data - Display for Entered Foods Data. -->
     <br>
-    <h3>Display for Nutritional Data.</h3>
-
+    <h3>Display for Entered Foods Data.</h3>
     <div class="container" ng-repeat="artist in artists">
 
       <!-- The ng-show will only display an image if it is defined -->
@@ -57,12 +59,108 @@
       <br> Bio: {{ artist.bio }}
       <br> DOB: {{ artist.dob }}
     </div>
-    <br> <br>
-    <h3>Nutrition Images if defined, or json if no images, will show below of https://mmart162-api.herokuapp.com/jcj52436999/artists/</h3>
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
+    <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+    <!-- Update Form - Entry form for Menus Data. -->
+    <br>
+    <h3>Entry form for Menus Data.</h3>
+    <form class="container" id="formMenus">
+      <label>Photo:</label>
+      <input type="file" id="imageOfPlate" />
+      <br>
+
+      <label>Menu Name:</label>
+      <input type="text" class="form-control" ng-model="currentMenu.name" />
+      <br>
+
+      <label>Food Items:</label>
+      <textarea class="form-control" ng-model="currentMenu.foodItem"></textarea>
+      <br>
+
+      <label>Date of Sitting:</label>
+      <input type="date" class="form-control" ng-model="currentMenu.dos" />
+      <br>
+      <label></label>
+      <button class="btn btn-primary" ng-click="saveMenu();">Save</button>
+      <button class="btn btn-default" ng-click="clearMenu();">Clear</button>
+    </form>
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+        <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+        <!-- Display Data - Display for Entered Menus Data. -->
+        <br>
+        <h3>Display for Entered Menus Data.</h3>
+        <div class="container" ng-repeat="menu in menus">
+
+          <!-- The ng-show will only display an image if it is defined -->
+          <img ng-show="{{menu.imageOfPlate !== undefined}}" ng-src="{{ menu.image.items[3].file_path }}" />
+
+          <strong>{{ menu.name }}</strong>
+          <a ng-click="edit(menu)"><i class="fa fa-edit"></i></a>
+          <a ng-click="delete(menu._id)"><i class="fa fa-trash"></i></a>
+          <br> Food Desc: {{ menu.foodItem }}
+          <br> DOS: {{ menu.dos }}
+        </div>
+        <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+            <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+            <!-- Update Form - Entry form for Eaten Data. -->
+            <br>
+            <h3>Entry form for Eaten Data.</h3>
+            <form class="container" id="formEaten">
+              <label>Photo:</label>
+              <input type="file" id="imageOfEaten" />
+              <br>
+
+              <label>Eaten Name:</label>
+              <input type="text" class="form-control" ng-model="currentEaten.name" />
+              <br>
+
+              <label>Eaten Items:</label>
+              <textarea class="form-control" ng-model="currentEaten.foodItem"></textarea>
+              <br>
+
+              <label>Date of Sitting:</label>
+              <input type="date" class="form-control" ng-model="currentEaten.dos" />
+              <br>
+              <label></label>
+              <button class="btn btn-primary" ng-click="saveEaten();">Save</button>
+              <button class="btn btn-default" ng-click="clearEaten();">Clear</button>
+            </form>
+            <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+                <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+                <!-- Display Data - Display for Entered Eaten Data. -->
+                <br>
+                <h3>Display for Entered Eaten Data.</h3>
+                <div class="container" ng-repeat="eaten in eatens">
+
+                  <!-- The ng-show will only display an image if it is defined -->
+                  <img ng-show="{{eaten.imageOfEaten !== undefined}}" ng-src="{{ menu.image.items[3].file_path }}" />
+
+                  <strong>{{ eaten.name }}</strong>
+                  <a ng-click="edit(eaten)"><i class="fa fa-edit"></i></a>
+                  <a ng-click="delete(eaten._id)"><i class="fa fa-trash"></i></a>
+                  <br> Food: {{ eaten.foodItem }}
+                  <br> DOS: {{ eaten.dos }}
+                </div>
+                <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+
+
+
+
+    <!-- VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV -->
+    <!-- Nutrition Images if defined, or json if no images, ... -->
+    <br> <br>
+    <h3>Nutrition - Foods Images if defined, or json if no images, will show below of https://mmart162-api.herokuapp.com/jcj52436999/artists/</h3>
     <pre>
       {{ artists | json }}
     </pre>
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
